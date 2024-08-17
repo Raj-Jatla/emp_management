@@ -74,4 +74,10 @@ public class EmployeeDao {
 		Employee emp = (Employee)query.getSingleResult();
 		return emp;
 	}
+	
+	public Employee findByContact(long contact) {
+		Query query = em.createQuery("select e from Employee e where e.EmployeeContact = ?1");
+		query.setParameter(1, contact);
+		return (Employee) query.getSingleResult();
+	}
 }
